@@ -1,7 +1,10 @@
 import os
+import sys
 import sqlite3
 import tempfile
 import unittest
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from SAS import init_db, mark_attendance, load_faq_data, get_faq_response
 
 class TestSmartAttendanceSystem(unittest.TestCase):
