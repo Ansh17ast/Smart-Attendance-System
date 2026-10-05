@@ -190,7 +190,7 @@ def main():
         print("Invalid choice.")
         logging.error(f"Invalid menu choice: {choice}")
 
+    print("Session completed. Thank you.")
+
 if __name__ == "__main__":
     main()
-
-print("Attendance is completed.Thankyou")
