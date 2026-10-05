@@ -3,6 +3,15 @@ import sys
 import sqlite3
 import tempfile
 import unittest
+from unittest.mock import MagicMock
+
+# Gracefully stub hardware-dependent computer vision modules if not installed in headless test/CI environments
+for mod in ("face_recognition", "cv2", "numpy"):
+    if mod not in sys.modules:
+        try:
+            __import__(mod)
+        except ImportError:
+            sys.modules[mod] = MagicMock()
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from SAS import init_db, mark_attendance, load_faq_data, get_faq_response
